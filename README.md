@@ -1,41 +1,100 @@
-# The Quail — Farmhouse Landing Page
+# The Quail — Coming Soon Page
 
-A clean, responsive landing page for The Quail, a farmhouse booking website.
+An elegant, luxurious "coming soon" page for The Quail farmhouse booking website.
 
-## What’s included
-- `index.html` — Semantic layout with hero, booking form, sections, and footer
-- `styles.css` — Modern dark theme with brand accent, responsive grid/flex
-- `script.js` — Mobile nav, smooth scroll, booking defaults/validation
-- `assets/icons` — Simple inline SVG icons
-- `assets/images` — Put your photos here (`hero.jpg`, interiors, gallery)
+## What's included
+- `index.html` — Refined coming soon layout with social links
+- `styles.css` — Luxurious design with gold accents and elegant typography
+- `script.js` — Smooth page transitions
+- `assets/icons/quail-feather.svg` — Brand logo
+- `assets/images/` — Your farmhouse photos used in background
+
+## Features
+- ✨ Elegant serif typography (Cormorant Garamond & Montserrat)
+- 🎨 Sophisticated gold color scheme with subtle animations
+- � Rotating farmhouse background images
+- 🌟 Subtle glow and shimmer effects
+- 📱 Fully responsive luxury design
+- 🔗 Social media links (Instagram, Facebook, Twitter)
 
 ## Quick start
-Open `index.html` directly in your browser. For best results, serve via a local server to avoid CORS limits on fonts and iframes.
+Simply open `index.html` in your browser, or serve it locally:
 
-### Optional local server (PowerShell)
+### Local server (PowerShell)
 ```powershell
 # Python 3
 python -m http.server 8000
+
 # or Node.js
 npx serve -l 8000 .
 ```
+
 Then visit http://localhost:8000
 
 ## Customize
-- Logo & name: header/footer `The Quail` text and `assets/icons/quail-feather.svg`
-- Contact: update mailto/tel links in the Contact section
-- Map: replace the OpenStreetMap iframe URL with your coordinates
-- Images: add your photos under `assets/images/` and update src paths
-- Colors: tweak CSS variables at the top of `styles.css`
 
-## Booking integration
-The booking form currently shows a confirmation alert. Hook it to your backend or a service:
-- Submit to a server endpoint
-- Integrate with a booking platform via their embed/script
+### Colors
+Edit CSS variables in `styles.css`:
+```css
+:root {
+  --bg: #0a0a0a;           /* Background */
+  --text: #f5f5f0;         /* Text color */
+  --gold: #d4af37;         /* Primary gold accent */
+  --gold-light: #f0d878;   /* Light gold */
+  --gold-dark: #b8941f;    /* Dark gold */
+  --muted: #c8c5bc;        /* Secondary text */
+}
+```
 
-## Accessibility
-- Skip link, labeled nav/menu, focus rings on inputs
-- Sufficient color contrast in dark theme
+### Background Images
+The page rotates through your farmhouse images. To customize, edit the animation in `styles.css`:
+```css
+@keyframes backgroundSlide {
+  0%, 100% { 
+    background: url('assets/images/1.jpeg') center/cover no-repeat;
+  }
+  33% { 
+    background: url('assets/images/5.avif') center/cover no-repeat;
+  }
+  66% { 
+    background: url('assets/images/8.avif') center/cover no-repeat;
+  }
+}
+```
+
+### Typography
+The page uses two elegant Google Fonts:
+- **Cormorant Garamond** (serif) for headings - classic, refined
+- **Montserrat** (sans-serif) for body text - modern, clean
+
+### Social Links
+Update the `href` attributes in `index.html`:
+```html
+<a href="https://instagram.com/yourhandle" ...>
+<a href="https://facebook.com/yourpage" ...>
+<a href="https://twitter.com/yourhandle" ...>
+```
+
+## File structure
+```
+thequail/
+├── index.html          # Coming soon page
+├── styles.css          # Styles with animations
+├── script.js           # Countdown & form logic
+├── README.md           # This file
+└── assets/
+    └── icons/
+        └── quail-feather.svg
+```
+
+## Browser Support
+Works in all modern browsers (Chrome, Firefox, Safari, Edge).
+
+## Next Steps
+When you're ready to launch the full website:
+1. Switch to the main branch
+2. Replace `index.html` with the full landing page
+3. Update navigation and booking system
 
 ## License
-You’re free to use and modify this template for your project.
+Free to use and modify for your project.
