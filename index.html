@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Quail — Farmhouse Retreat & Booking</title>
+  <meta name="description" content="Escape to The Quail, a serene farmhouse retreat. Explore stays, amenities, gallery, and book your perfect countryside getaway." />
+  <meta name="theme-color" content="#0e0f10" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="The Quail — Farmhouse Retreat & Booking" />
+  <meta property="og:description" content="Wake to birdsong and unwind under starry skies. Explore stays, amenities, and book your countryside escape." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=70" />
+  <meta property="og:url" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Quail — Farmhouse Retreat & Booking" />
+  <meta name="twitter:description" content="A serene farmhouse retreat. See the gallery, amenities, and book your stay." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=70" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/icons/quail-feather.svg" type="image/svg+xml">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="The Quail home">
+        <img src="assets/icons/quail-feather.svg" alt="The Quail feather logo" width="32" height="32" />
+        <span>The Quail</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+        <ul id="primary-menu" class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#stay">Stays</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="btn btn-sm" href="#booking">Book now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-label="Hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Slow down at The Quail</h1>
+          <p>Wake to birdsong, sip coffee under open skies, and end your day by the fire. Your countryside escape awaits, just outside the city.</p>
+          <div class="hero-ctas">
+            <a class="btn" href="#booking">Check availability</a>
+            <a class="btn btn-outline" href="#about">Explore the farmhouse</a>
+          </div>
+        </div>
+        <form class="booking" id="booking" aria-label="Booking form">
+          <h2>Book your stay</h2>
+          <div class="grid">
+            <label>
+              <span>Check-in</span>
+              <input type="date" id="checkin" name="checkin" required />
+            </label>
+            <label>
+              <span>Check-out</span>
+              <input type="date" id="checkout" name="checkout" required />
+            </label>
+            <label>
+              <span>Guests</span>
+              <select id="guests" name="guests" required>
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select>
+            </label>
+            <button type="submit" class="btn btn-block">Find dates</button>
+          </div>
+          <p class="fine-print">No payment required to check availability.</p>
+        </form>
+      </div>
+      <div class="hero-bg" aria-hidden="true"></div>
+    </section>
+
+    <section id="about" class="about section">
+      <div class="container two-col">
+        <div>
+          <h2>A farmhouse made for lingering</h2>
+          <p>Nested among rolling fields and quiet trails, The Quail blends rustic charm with modern comfort. Sunlit rooms, a chef-friendly kitchen, and spacious outdoor seating make it ideal for families, friends, and couples alike.</p>
+          <ul class="checks">
+            <li>3 cozy bedrooms, sleeps up to 8</li>
+            <li>Fully equipped kitchen + outdoor grill</li>
+            <li>Fire pit, stargazing deck, and hammock grove</li>
+            <li>Fast Wi‑Fi, workspace corner</li>
+          </ul>
+          <div class="chips" role="list" aria-label="Highlights">
+            <span role="listitem" class="chip">Countryside views</span>
+            <span role="listitem" class="chip">Pet-friendly</span>
+            <span role="listitem" class="chip">Self check‑in</span>
+            <span role="listitem" class="chip">Free parking</span>
+          </div>
+        </div>
+        <div class="media-card">
+          <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=70" alt="Warm farmhouse living room with sunlight" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section id="amenities" class="amenities section alt">
+      <div class="container">
+        <h2>Amenities you’ll love</h2>
+        <div class="features">
+          <article class="feature">
+            <img src="assets/icons/leaf.svg" alt="Nature icon" width="32" height="32" />
+            <h3>Nature on your doorstep</h3>
+            <p>Walk private trails, spot quails at dawn, and picnic beneath old oaks.</p>
+          </article>
+          <article class="feature">
+            <img src="assets/icons/fire.svg" alt="Fire icon" width="32" height="32" />
+            <h3>Evenings by the fire</h3>
+            <p>Gather for stories and s’mores around the fire pit under starry skies.</p>
+          </article>
+          <article class="feature">
+            <img src="assets/icons/wifi.svg" alt="Wi‑Fi icon" width="32" height="32" />
+            <h3>Work + unwind</h3>
+            <p>Fast Wi‑Fi and a comfy desk nook make remote work a breeze.</p>
+          </article>
+          <article class="feature">
+            <img src="assets/icons/chef-hat.svg" alt="Chef hat icon" width="32" height="32" />
+            <h3>Cook together</h3>
+            <p>Fully stocked kitchen, outdoor grill, and farm-fresh produce nearby.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="stay" class="stays section">
+      <div class="container">
+        <h2>Choose your stay</h2>
+        <div class="cards">
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1505692794403-34d4982f88aa?auto=format&fit=crop&w=1200&q=70" alt="Master suite" loading="lazy" />
+            <div class="card-body">
+              <h3>Master Suite</h3>
+              <p>King bed, ensuite bath, private balcony with field views.</p>
+              <a href="#booking" class="btn btn-sm">Book Master</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1560448205-4d9b3e6bb6d3?auto=format&fit=crop&w=1200&q=70" alt="Family room" loading="lazy" />
+            <div class="card-body">
+              <h3>Family Room</h3>
+              <p>Queen + twin bunks, perfect for families and groups.</p>
+              <a href="#booking" class="btn btn-sm">Book Family</a>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=70" alt="Cozy room" loading="lazy" />
+            <div class="card-body">
+              <h3>Cozy Nook</h3>
+              <p>Queen bed, library shelf, soft lighting, pure quiet.</p>
+              <a href="#booking" class="btn btn-sm">Book Cozy</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery section alt">
+      <div class="container">
+        <h2>Gallery</h2>
+        <div class="masonry">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=70" alt="Sunset over fields" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=1200&q=70" alt="Outdoor dining" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1501785888041-74e0a3f0d1f2?auto=format&fit=crop&w=1200&q=70" alt="Fire pit at night" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=70" alt="Kitchen with natural light" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=70" alt="Trail through tall grass" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?auto=format&fit=crop&w=1200&q=70" alt="Bedroom with rustic decor" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials section">
+      <div class="container">
+        <h2>Guests say it best</h2>
+        <div class="quotes">
+          <figure class="quote">
+            <blockquote>We unplugged, reconnected, and saw the Milky Way. The Quail is magic.</blockquote>
+            <figcaption>— Aisha, weekend guest</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>The fire pit nights were a highlight. Kids loved the trails!</blockquote>
+            <figcaption>— Marcos, family trip</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>Peaceful, spotless, and beautifully designed. Already planning our return.</blockquote>
+            <figcaption>— Priya, workcation</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact section alt">
+      <div class="container two-col">
+        <div>
+          <h2>Find us</h2>
+          <p>Located an easy drive from the city, near quiet country roads and local markets. Exact address provided after booking.</p>
+          <ul class="checks">
+            <li>Check‑in: 3:00 PM · Check‑out: 11:00 AM</li>
+            <li>Quiet hours: 10:00 PM – 7:00 AM</li>
+            <li>Pets welcome with prior notice</li>
+          </ul>
+          <div class="contact-items">
+            <a href="mailto:stay@thequail.co" class="contact-item" aria-label="Email">
+              <span>stay@thequail.co</span>
+            </a>
+            <a href="tel:+1234567890" class="contact-item" aria-label="Phone">
+              <span>+1 (234) 567‑890</span>
+            </a>
+          </div>
+        </div>
+        <div class="map-card">
+          <iframe title="Map placeholder" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=77.5%2C12.8%2C77.7%2C12.95&layer=mapnik" ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <img src="assets/icons/quail-feather.svg" alt="The Quail feather logo" width="28" height="28" />
+        <span>The Quail</span>
+      </a>
+      <p>© <span id="year"></span> The Quail. All rights reserved.</p>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="X">X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
