@@ -24,8 +24,8 @@ export default function Footer() {
           <div className="footer__col">
             <h3>Contact</h3>
             <ul>
-              <li>Email: <a href="mailto:gktechspheres@gmail.com">gktechspheres@gmail.com</a></li>
-              <li>WhatsApp: <a target="_blank" rel="noopener" href="https://wa.me/919392576089">+91 93925 76089</a></li>
+              <li>Email: <a href="mailto:thequail.in@gmail.com">thequail.in@gmail.com</a></li>
+              <li>WhatsApp: <a target="_blank" rel="noopener" href="https://wa.me/918121028100">+91 81210 28100</a></li>
             </ul>
           </div>
           <div className="footer__col">
