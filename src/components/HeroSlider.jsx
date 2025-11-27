@@ -1,20 +1,20 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 
 const GALLERY_IMAGES = [
-  '/assets/images/1.JPG',
-  '/assets/images/4.JPG',
-  '/assets/images/5.JPG',
-  '/assets/images/8.JPG',
-  '/assets/images/11.JPG',
-  '/assets/images/15.JPG',
-  '/assets/images/16.JPG',
-  '/assets/images/17.JPG',
-  '/assets/images/18.JPG',
-  '/assets/images/19.JPG',
-  '/assets/images/20.JPG',
-  '/assets/images/21.JPG',
-  '/assets/images/23.JPG',
-  '/assets/images/25.JPG',
+  '/assets/images/1.avif',
+  '/assets/images/4.avif',
+  '/assets/images/5.avif',
+  '/assets/images/8.avif',
+  '/assets/images/11.avif',
+  '/assets/images/15.avif',
+  '/assets/images/16.avif',
+  '/assets/images/17.avif',
+  '/assets/images/18.avif',
+  '/assets/images/19.avif',
+  '/assets/images/20.avif',
+  '/assets/images/21.avif',
+  '/assets/images/23.avif',
+  '/assets/images/25.avif',
 ]
 
 export default function HeroSlider() {
@@ -34,7 +34,7 @@ export default function HeroSlider() {
   }, [index])
 
   return (
-    <section id="gallery" className="hero">
+    <section id="" className="hero">
       <div className="container hero__inner">
         <div className="slider" aria-label="Farmhouse image gallery">
           <div className="slider__track">
