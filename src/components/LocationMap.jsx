@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function LocationMap() {
   return (
-    <section id="location" className="location">
+    <section id="contact" className="location">
       <div className="container">
         <h2 className="section__title">Find us</h2>
         <div className="map__wrap">

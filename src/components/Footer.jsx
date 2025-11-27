@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
   const links = [
     { href: '#booking', label: 'Booking' },
     { href: '#features', label: 'Amenities' },
-    { href: '#location', label: 'Location' },
+    { href: '#contact', label: 'Contact' },
   ]
 
 export default function Footer() {
