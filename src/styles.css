@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
+/* Candara Font */
+@font-face {
+  font-family: 'Candara';
+  src: url('/assets/fonts/Candara/Web Fonts/e662339992c4abf5b43f537391bd3169.woff2') format('woff2'),
+       url('/assets/fonts/Candara/Web Fonts/e662339992c4abf5b43f537391bd3169.woff') format('woff'),
+       url('/assets/fonts/Candara/Candara.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Dark theme (original) */
   /* --bg: #0b0b0c; */
@@ -80,27 +91,26 @@ body {
 
 .brand {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 8px;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .brand a {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.brand .brand__mark {
-  font-family: "Playfair Display", serif;
-  color: var(--gold);
-  font-weight: 600;
-  font-size: 18px;
-}
-
+.brand .brand__mark,
 .brand .brand__name {
-  font-family: "Playfair Display", serif;
-  font-weight: 700;
-  font-size: 22px;
+  font-family: 'Candara', 'Playfair Display', serif;
+  color: #0a2f0a;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 1;
 }
 
 .nav__links {
@@ -128,19 +138,40 @@ body {
   background: var(--glass);
   color: var(--text);
   cursor: pointer;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 4px;
+  padding: 0;
+  transition: all 0.3s ease;
 }
 
-.nav__toggle .nav__bar,
+.nav__toggle:hover {
+  background: var(--bg-elev);
+  border-color: var(--gold);
+}
+
 .nav__bar {
   display: block;
-  width: 18px;
-  height: 2px;
+  width: 20px;
+  height: 2.5px;
   background: var(--text);
-  margin: 3px 0;
   border-radius: 2px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav__toggle[aria-expanded="true"] .nav__bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.nav__toggle[aria-expanded="true"] .nav__bar:nth-child(2) {
+  opacity: 0;
+  /* transform: translateX(-20px); */
+}
+
+.nav__toggle[aria-expanded="true"] .nav__bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
 .nav__mobile {
@@ -504,6 +535,14 @@ body {
   flex-wrap: wrap;
 }
 
+.footer__brand .brand .brand__mark,
+.footer__brand .brand .brand__name {
+  font-family: 'Candara', 'Playfair Display', serif;
+  color: #0a2f0a;
+  font-weight: 400;
+  font-size: 26px;
+}
+
 .footer__cols {
   display: flex;
   gap: 26px;
@@ -555,16 +594,41 @@ body {
     flex-direction: column;
   }
 
+  .nav__inner {
+    justify-content: space-between;
+  }
+
+  .brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .footer__tag {
+      margin-top: 36px;
+  }
+
   .nav__links {
     display: none;
   }
 
   .nav__toggle {
-    display: inline-flex;
+    display: flex;
+    margin-left: auto;
   }
 
   .nav__mobile.nav__mobile--open {
     display: block;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer__cols {
+    flex-direction: column;
+    gap: 24px;
   }
 }
 
