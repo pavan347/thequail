@@ -10,7 +10,60 @@ const {
   VITE_EMAILJS_TEMPLATE_ID: EMAILJS_TEMPLATE_ID,
 } = import.meta.env
 
-const TAX_PER_GUEST_INR = 150
+// Pricing configuration
+const BASE_GUESTS = 4
+const WEEKEND_BASE_PRICE = 13000 // Friday, Saturday, Sunday
+const WEEKDAY_BASE_PRICE = 11000 // Monday, Tuesday, Wednesday, Thursday
+const ADDITIONAL_GUEST_PRICE = 500
+const GST_RATE = 0.18 // 18%
+
+function isWeekendDay(date) {
+  const day = date.getDay()
+  return day === 5 || day === 6 || day === 0 // Friday=5, Saturday=6, Sunday=0
+}
+
+function calculatePricing(checkinDate, checkoutDate, guestCount) {
+  if (!checkinDate || !checkoutDate || !guestCount) {
+    return { subtotal: 0, gst: 0, total: 0, breakdown: [] }
+  }
+
+  const guests = Number(guestCount)
+  const breakdown = []
+  let subtotal = 0
+
+  // Calculate for each night
+  const currentDate = new Date(checkinDate)
+  const endDate = new Date(checkoutDate)
+  
+  while (currentDate < endDate) {
+    const isWeekend = isWeekendDay(currentDate)
+    const basePrice = isWeekend ? WEEKEND_BASE_PRICE : WEEKDAY_BASE_PRICE
+    const dayType = isWeekend ? 'Weekend' : 'Weekday'
+    
+    // Calculate guest pricing
+    let nightPrice = basePrice
+    if (guests > BASE_GUESTS) {
+      const additionalGuests = guests - BASE_GUESTS
+      nightPrice += additionalGuests * ADDITIONAL_GUEST_PRICE
+    }
+    
+    subtotal += nightPrice
+    
+    breakdown.push({
+      date: new Date(currentDate),
+      type: dayType,
+      price: nightPrice,
+      isWeekend
+    })
+    
+    currentDate.setDate(currentDate.getDate() + 1)
+  }
+
+  const gst = subtotal * GST_RATE
+  const total = subtotal + gst
+
+  return { subtotal, gst, total, breakdown }
+}
 
 export default function BookingForm() {
   const today = useMemo(() => {
@@ -30,7 +83,10 @@ export default function BookingForm() {
   const inDate = checkin ? new Date(checkin) : null
   const outDate = checkout ? new Date(checkout) : null
   const nights = calcNights(inDate, outDate)
-  const tax = (Number(guests || 0)) * TAX_PER_GUEST_INR
+  const pricing = useMemo(() => 
+    calculatePricing(inDate, outDate, guests),
+    [inDate, outDate, guests]
+  )
 
   useEffect(() => {
     if (EMAILJS_PUBLIC_KEY) emailjs.init(EMAILJS_PUBLIC_KEY)
@@ -87,7 +143,9 @@ export default function BookingForm() {
       `Check-in: ${encodeURIComponent(checkin)}%0D%0A` +
       `Check-out: ${encodeURIComponent(checkout)}%0D%0A` +
       `Nights: ${encodeURIComponent(String(nights))}%0D%0A` +
-      `Tax estimate: ${encodeURIComponent(formatINR(tax))}%0D%0A` +
+      `Subtotal: ${encodeURIComponent(formatINR(pricing.subtotal))}%0D%0A` +
+      `GST (18%%): ${encodeURIComponent(formatINR(pricing.gst))}%0D%0A` +
+      `Total Amount: ${encodeURIComponent(formatINR(pricing.total))}%0D%0A` +
       (notes ? `Notes: ${encodeURIComponent(notes)}%0D%0A` : '') +
       `%0D%0AThis booking was submitted from thequail.in`
 
@@ -96,8 +154,12 @@ export default function BookingForm() {
     try {
       if (EMAILJS_PUBLIC_KEY && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID) {
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-          name, phone, email, guests, checkin, checkout, nights, tax: formatINR(tax), notes,
-          to_email: 'gktechspheres@gmail.com'
+          name, phone, email, guests, checkin, checkout, nights, 
+          subtotal: formatINR(pricing.subtotal),
+          gst: formatINR(pricing.gst),
+          total: formatINR(pricing.total),
+          notes,
+          to_email: 'thequail.in@gmail.com'
         })
         emailSent = true
       }
@@ -106,24 +168,26 @@ export default function BookingForm() {
     }
 
     if (!emailSent) {
-      const mailto = `mailto:gktechspheres@gmail.com?subject=${encodeURIComponent('Booking Request – The Quail')}&body=${message}`
-      window.open(mailto, '_blank')
-    }
+      // const mailto = `mailto:gktechspheres@gmail.com?subject=${encodeURIComponent('Booking Request – The Quail')}&body=${message}`
+      // window.open(mailto, '_blank')
+      const waText =
+        `Booking Request - The Quail\n` +
+        `Name: ${name}\n` +
+        `Phone: ${phone}\n` +
+        `Email: ${email}\n` +
+        `Guests: ${guests}\n` +
+        `Check-in: ${checkin}\n` +
+        `Check-out: ${checkout}\n` +
+        `Nights: ${nights}\n` +
+        `Subtotal: ${formatINR(pricing.subtotal)}\n` +
+        `GST (18%): ${formatINR(pricing.gst)}\n` +
+        `Total Amount: ${formatINR(pricing.total)}\n` +
+        (notes ? `Notes: ${notes}\n` : '') +
+        `\nSent from thequail.in`
+      const waUrl = `https://wa.me/918121028100?text=${encodeURIComponent(waText)}`
+      window.open(waUrl, '_blank')
 
-    const waText =
-      `Booking Request - The Quail\n` +
-      `Name: ${name}\n` +
-      `Phone: ${phone}\n` +
-      `Email: ${email}\n` +
-      `Guests: ${guests}\n` +
-      `Check-in: ${checkin}\n` +
-      `Check-out: ${checkout}\n` +
-      `Nights: ${nights}\n` +
-      `Tax estimate: ${formatINR(tax)}\n` +
-      (notes ? `Notes: ${notes}\n` : '') +
-      `\nSent from thequail.in`
-    const waUrl = `https://wa.me/919392576089?text=${encodeURIComponent(waText)}`
-    window.open(waUrl, '_blank')
+    }
 
     alert('Thanks! We have received your details. We’ll confirm availability shortly.')
     setName(''); setPhone(''); setEmail(''); setGuests(''); setCheckin(''); setCheckout(''); setNotes('')
@@ -134,7 +198,11 @@ export default function BookingForm() {
     <section id="booking" className="booking">
       <div className="container booking__inner">
         <div className="booking__card">
-          <h2 className="section__title">Reserve your dates</h2>
+          <h2 className="section__title">
+            Reserve your dates 
+            <p className='booked__dates'>{step === 'dates' ? "" : inDate && outDate ? ` ${inDate.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})} → ${outDate.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}` : ''}</p>
+          </h2>
+          
           <form className="form" onSubmit={submit} noValidate>
             {step === 'dates' ? (
               <>
@@ -187,7 +255,7 @@ export default function BookingForm() {
                     <label htmlFor="guests">Guests</label>
                     <select id="guests" value={guests} onChange={(e)=>setGuests(e.target.value)} required>
                       <option value="" disabled>Select</option>
-                      {Array.from({length:20}, (_,i)=>i+1).map(n => (
+                      {Array.from({length:15}, (_,i)=>i+1).map(n => (
                         <option key={n} value={n}>{n}</option>
                       ))}
                     </select>
@@ -209,10 +277,38 @@ export default function BookingForm() {
                     <strong>{Number(guests || 0)}</strong>
                   </div>
                   <div className="summary__item">
-                    <span>Tax estimate</span>
-                    <strong>{formatINR(tax)}</strong>
+                    <span>Subtotal</span>
+                    <strong>{formatINR(pricing.subtotal)}</strong>
+                  </div>
+                  <div className="summary__item">
+                    <span>GST (18%)</span>
+                    <strong>{formatINR(pricing.gst)}</strong>
+                  </div>
+                  <div className="summary__item summary__item--total">
+                    <span>Total Amount</span>
+                    <strong>{formatINR(pricing.total)}</strong>
                   </div>
                 </div>
+                {pricing.breakdown.length > 0 && (
+                  <div className="pricing__breakdown">
+                    <details>
+                      <summary>View pricing breakdown</summary>
+                      <div className="breakdown__list">
+                        {pricing.breakdown.map((day, idx) => (
+                          <div key={idx} className="breakdown__item">
+                            <span className="breakdown__date">
+                              {day.date.toLocaleDateString('en-IN', { weekday: 'short', month: 'short', day: 'numeric' })}
+                            </span>
+                            <span className={`breakdown__type ${day.isWeekend ? 'breakdown__type--weekend' : ''}`}>
+                              {day.type}
+                            </span>
+                            <span className="breakdown__price">{formatINR(day.price)}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </details>
+                  </div>
+                )}
                 <div className="form__actions">
                   <button type="button" className="btn btn--ghost" onClick={goBack}>Back</button>
                   <button type="submit" className="btn btn--primary">Submit booking</button>
@@ -240,7 +336,9 @@ export default function BookingForm() {
               <div><strong>Email:</strong> {email}</div>
               <div><strong>Phone:</strong> {phone}</div>
               <div><strong>Guests:</strong> {guests}</div>
-              <div><strong>Tax estimate:</strong> {formatINR(tax)}</div>
+              <div><strong>Subtotal:</strong> {formatINR(pricing.subtotal)}</div>
+              <div><strong>GST (18%):</strong> {formatINR(pricing.gst)}</div>
+              <div className="confirm__total"><strong>Total Amount:</strong> <span className="total-amount">{formatINR(pricing.total)}</span></div>
               {notes && <div className="confirm__notes"><strong>Notes:</strong> {notes}</div>}
             </div>
           </Modal>
@@ -268,7 +366,7 @@ function formatINR(amount){
 export const BOOKED_DATES = [
   // Example pre-booked dates
   '2025-10-31',
-  '2025-11-01',
-  '2025-11-02',
-  '2025-11-03',
+  '2025-11-27',
+  '2025-11-29',
+  '2025-11-28',
 ]

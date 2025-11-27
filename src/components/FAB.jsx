@@ -1,8 +1,8 @@
 import React from 'react'
 
 export default function FAB(){
-  const phone = '+919392576089'
-  const waNumber = '919392576089'
+  const phone = '+918121028100'
+  const waNumber = '918121028100'
   const message = `Hello! I'm interested in booking The Quail. Could you please share availability and pricing?` 
   const waHref = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`
   const telHref = `tel:${phone}`
