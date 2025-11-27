@@ -366,7 +366,7 @@ function formatINR(amount){
 export const BOOKED_DATES = [
   // Example pre-booked dates
   '2025-10-31',
-  '2025-11-01',
+  '2025-11-27',
   '2025-11-29',
   '2025-11-28',
 ]
