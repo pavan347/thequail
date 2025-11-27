@@ -159,7 +159,7 @@ export default function BookingForm() {
           gst: formatINR(pricing.gst),
           total: formatINR(pricing.total),
           notes,
-          to_email: 'gktechspheres@gmail.com'
+          to_email: 'thequail.in@gmail.com'
         })
         emailSent = true
       }
@@ -184,7 +184,7 @@ export default function BookingForm() {
         `Total Amount: ${formatINR(pricing.total)}\n` +
         (notes ? `Notes: ${notes}\n` : '') +
         `\nSent from thequail.in`
-      const waUrl = `https://wa.me/919392576089?text=${encodeURIComponent(waText)}`
+      const waUrl = `https://wa.me/918121028100?text=${encodeURIComponent(waText)}`
       window.open(waUrl, '_blank')
 
     }
