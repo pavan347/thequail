@@ -34,7 +34,7 @@ npm run preview
 - Guests: selecting the number of guests updates the tax estimate live.
 - Tax: flat per‑guest constant `TAX_PER_GUEST_INR` (default ₹150) defined in `src/components/BookingForm.jsx`.
 - Booked dates: update the `BOOKED_DATES` array (YYYY‑MM‑DD) in `src/components/BookingForm.jsx`.
-- Submit: confirmation modal → sends via EmailJS (if configured) and opens WhatsApp with a prefilled message to +91 93925 76089. Falls back to `mailto:` if EmailJS isn’t configured.
+- Submit: confirmation modal → sends via EmailJS (if configured) and opens WhatsApp with a prefilled message to +91 81210 28100. Falls back to `mailto:` if EmailJS isn’t configured.
 
 ## Optional: Client‑side email via EmailJS
 If you prefer emails to be sent automatically from the page without opening an email app:
