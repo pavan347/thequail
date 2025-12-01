@@ -19,12 +19,25 @@ const GALLERY_IMAGES = [
 
 export default function HeroSlider() {
   const [index, setIndex] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(false)
   const timerRef = useRef(null)
+  const audioRef = useRef(null)
   const images = useMemo(() => GALLERY_IMAGES, [])
 
   const setActive = (i) => setIndex(((i % images.length) + images.length) % images.length)
   const next = () => setActive(index + 1)
   const prev = () => setActive(index - 1)
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause()
+      } else {
+        audioRef.current.play()
+      }
+      setIsPlaying(!isPlaying)
+    }
+  }
 
   useEffect(() => {
     timerRef.current && clearInterval(timerRef.current)
@@ -35,6 +48,9 @@ export default function HeroSlider() {
 
   return (
     <section id="" className="hero">
+      <audio ref={audioRef} loop>
+        <source src="/assets/Spring-Flowers.mp3" type="audio/mpeg" />
+      </audio>
       <div className="container hero__inner">
         <div className="slider" aria-label="Farmhouse image gallery">
           <div className="slider__track">
@@ -52,6 +68,18 @@ export default function HeroSlider() {
           </div>
           <button className="slider__btn slider__btn--prev" onClick={() => setActive(index - 1)} aria-label="Previous image">&#10094;</button>
           <button className="slider__btn slider__btn--next" onClick={() => setActive(index + 1)} aria-label="Next image">&#10095;</button>
+          <button className="slider__music-btn" onClick={toggleMusic} aria-label={isPlaying ? "Pause music" : "Play music"}>
+            {isPlaying ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            )}
+          </button>
           <div className="slider__dots" aria-hidden="true">
             {images.map((_, i) => (
               <div key={i} className={`dot ${i === index ? 'dot--active' : ''}`} onClick={() => setActive(i)} />

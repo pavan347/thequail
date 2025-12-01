@@ -337,6 +337,34 @@ body {
   background: var(--gold);
 }
 
+.slider__music-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--glass-border);
+  color: #0a2f0a;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.slider__music-btn:hover {
+  box-shadow: 0 0 0 4px var(--ring), 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+.slider__music-btn svg {
+  color: #0a2f0a;
+}
+
 .hero__overlay {
   position: absolute;
   inset: 0;
