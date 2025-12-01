@@ -7,7 +7,7 @@ export default function AddressInfo(){
         <div className="address__card">
           <h3 className="card__title">Address</h3>
           <p>Yenkapally Rd, Shankarpalle, Telangana 501203, India</p>
-          <p className="muted">Nearest City Area: Chevella (≈35 km from Gachibowli ORR)</p>
+          <p className="muted">Nearest City Area: Chevella</p>
           <p className="muted">Distance from City Centre: ≈18.4 km (as per MakeMyTrip)</p>
         </div>
         <div className="address__card">

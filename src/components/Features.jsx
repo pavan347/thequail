@@ -23,7 +23,7 @@ const data = [
   {
     title: 'Outdoor',
     items: [
-      { label: 'Private Swimming Pool', highlight: true, icon: 'pool' },
+      { label: 'Plunge Pool', highlight: true, icon: 'pool' },
       { label: 'Lawn / Garden', icon: 'garden' },
       { label: 'Outdoor party space', icon: 'party' },
       { label: 'Scenic location', icon: 'scenic' },
@@ -34,8 +34,8 @@ const data = [
     items: [
       { label: 'Fully equipped kitchen', icon: 'kitchen' },
       { label: 'Caretaker on-site', icon: 'caretaker' },
-      { label: 'Private Parking (1+ car)', icon: 'parking' },
-      { label: 'Power backup', icon: 'power' },
+      { label: 'Private Parking', icon: 'parking' },
+      
     ],
   },
   {
@@ -43,6 +43,10 @@ const data = [
     items: [
       { label: 'Unlimited high-speed Wi‑Fi', icon: 'wifi' },
       { label: 'Dedicated workspace', icon: 'workspace' },
+      { label: 'Power backup', icon: 'power' },
+      { label: 'Games – Badminton,Chess,Carroms', icon: 'party' },
+      { label: 'Books', icon: 'party' },
+      { label: 'Smart TV', icon: 'party' },
     ],
   },
   {
@@ -58,7 +62,7 @@ export default function Features(){
   return (
     <section id="features" className="features">
       <div className="container">
-        <h2 className="section__title">Amenities & Highlights</h2>
+        <h2 className="section__title">Amenities</h2>
         <div className="features__grid">
           {data.map((cat) => (
             <div key={cat.title} className="card">

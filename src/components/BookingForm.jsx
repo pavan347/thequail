@@ -159,7 +159,7 @@ export default function BookingForm() {
           gst: formatINR(pricing.gst),
           total: formatINR(pricing.total),
           notes,
-          to_email: 'thequail.in@gmail.com'
+          to_email: 'pavankumargarapati04@gmail.com'
         })
         emailSent = true
       }

@@ -15,8 +15,13 @@ export default function Footer() {
       <div className="container footer__inner">
         <div className="footer__brand">
           <div className="brand">
-            <span className="brand__mark">The</span>
-            <span className="brand__name">Quail</span>
+            <div className="brand__text">
+              <div className="brand__main">
+                <span className="brand__mark">The</span>
+                <span className="brand__name">Quail</span>
+              </div>
+              <span className="brand__tagline">A Boutique Farmhouse..</span>
+            </div>
           </div>
           <p className="footer__tag">A luxury farmhouse for your most memorable gatherings.</p>
         </div>

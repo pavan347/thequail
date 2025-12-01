@@ -24,8 +24,13 @@ export default function Navbar() {
       <div className="container nav__inner">
         <div className="brand">
           <a href="#">
-            <span className="brand__mark">The</span>
-          <span className="brand__name">Quail</span>
+            <div className="brand__text">
+              <div className="brand__main">
+                <span className="brand__mark">The</span>
+                <span className="brand__name">Quail</span>
+              </div>
+              <span className="brand__tagline">A Boutique Farmhouse..</span>
+            </div>
           </a>
         </div>
         <nav className="nav__links">
