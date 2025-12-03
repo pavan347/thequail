@@ -87,7 +87,7 @@ export default function HeroSlider() {
           </div>
         </div>
         <div className="hero__overlay">
-          <h1 className="hero__title">Embrace the Rustic Charm</h1>
+          <h1 className="hero__title">Embrace&nbsp;the&nbsp;Rustic&nbsp;Charm</h1>
           <p className="hero__subtitle">Country Comfort Timeless Tranquility</p>
           <a className="btn btn--primary" href="#booking">Book your stay</a>
         </div>
